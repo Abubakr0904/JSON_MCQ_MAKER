@@ -1,0 +1,19 @@
+[
+    {
+        "Question": "1-savol",
+        "Options": {
+            "1-variant": false,
+            "2-variant": true,
+            "3-variant": false,
+            "4-variant": false
+        }
+    },
+    {
+        "Question": "2-savol",
+        "Options": {
+            "1-variant": false,
+            "2-variant": false,
+            "3-variant": true
+        }
+    }
+]

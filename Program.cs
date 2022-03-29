@@ -6,24 +6,31 @@ while (true)
     // ? kamida uchta savol o'qish uchun counter
     int c = 3;
     // ? savol o'qish uchun
-    string savol;
+    string savol = "";
     // ? variant o'qish uchun
     string option;
-    // ? savol
-    savol = Console.ReadLine();
     // ? 3 tadan ko'p variant kiritishni xohlash yoki xohlamasligini so'rash uchun
     string a = "1";
     // ? variant o'qish uchun
     Dictionary<string, bool> options = new();
-    // ? o'qilgan variantlarni indexlari bilan ko'rsatish uchun listga o'girib olinadi
-    var list = options.Keys.ToList();
+    // ? o'qilgan variantlarni indexlari bilan ko'rsatish uchun ushbu listga o'girib olinadi
+    List<string> list = new();
     // ? mavjud ma'lumotlarni o'qib olish uchun model
     List<QuestionModel> existingData = new();
     
     Console.WriteLine($"YANGI TESTNI KIRITISH BOSHLANDI!");
     
     Console.WriteLine($"SAVOLNI KIRITING: ");
-    savol = Console.ReadLine();
+
+    // ? savolni o'qiydi. bo'sh bo'lsa yana so'raydi
+    while(string.IsNullOrWhiteSpace(savol))
+    {
+        savol = Console.ReadLine();
+        if(string.IsNullOrWhiteSpace(savol))
+        {
+            Console.WriteLine($"XATOLIK! SAVOLNI QAYTADAN KIRITING!");
+        }
+    }
     
 
     // ? 3 ta variant o'qiladi
@@ -35,6 +42,8 @@ while (true)
         while(option == null || option == string.Empty || !options.TryAdd(option, false))
         {
             Console.WriteLine($"BIR XIL VARIANTLAR YOKI BO'SH MATN KIRITISH MUMKIN EMAS!");
+            Console.WriteLine($"VARIANTNI QAYTADAN KIRITING");
+            
             option = Console.ReadLine();
         }
     }
@@ -58,6 +67,9 @@ while (true)
             }
         }
     }
+
+    // ko'rsatish uchun variantlarni ko'chirib olinyapti
+    list = options.Keys.ToList();
 
     // ? ko'rsatilgan variantlar orasidan to'g'risini tanlashi so'raladi
     Console.WriteLine($"TO'G'RI JAVOB RAQAMINI KIRITING!");
